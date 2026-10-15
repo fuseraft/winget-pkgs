@@ -13,7 +13,6 @@ jobs:
       - name: Update winget to the latest release
         shell: pwsh
         run: |
-          Install-PackageProvider -Name NuGet -Force | Out-Null
           Install-Module Microsoft.WinGet.Client -Force -Repository PSGallery
           Repair-WinGetPackageManager -AllUsers -Latest -Force
           winget --version
