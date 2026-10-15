@@ -36,6 +36,6 @@ jobs:
       - name: List and uninstall
         shell: pwsh
         run: |
-          winget list --id Fuseraft.Anchor --exact --disable-interactivity
-          winget uninstall --id Fuseraft.Anchor --exact --disable-interactivity
+          winget list --id Fuseraft.Anchor --exact --accept-source-agreements --disable-interactivity
+          winget uninstall --id Fuseraft.Anchor --exact --accept-source-agreements --disable-interactivity
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
