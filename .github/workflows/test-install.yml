@@ -33,9 +33,10 @@ jobs:
           anchor --version
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
-      - name: List and uninstall
+      - name: Uninstall
         shell: pwsh
         run: |
-          winget list --id Fuseraft.Anchor --exact --accept-source-agreements --disable-interactivity
-          winget uninstall --id Fuseraft.Anchor --exact --accept-source-agreements --disable-interactivity
+          winget uninstall --manifest manifest --accept-source-agreements --disable-interactivity
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          if (Test-Path "$env:LOCALAPPDATA\Microsoft\WinGet\Links\anchor.exe") { throw "anchor alias still present" }
+          "anchor alias removed"
